@@ -2,7 +2,13 @@ class WrongNumberOfPlayersError < StandardError ; end
 class NoSuchStrategyError < StandardError ; end
 
 def rps_result(m1, m2)
-  # YOUR CODE HERE
+  rules = {"R" => "S", "S" => "P", "P" => "R"}
+
+  if rules[m2] == m1
+    1
+  else
+    0
+  end
 end
 
 def rps_game_winner(game)
@@ -11,11 +17,7 @@ def rps_game_winner(game)
 
   rules = {"R" => "S", "S" => "P", "P" => "R"}
 
-  if rules[game[1][1]] == game[0][1]
-    game[1][0]
-    else
-      game[0][0]
-  end
+  game[rps_result(game[0][1], game[1][1])]
 end
 
 def rps_tournament_winner(tournament)
