@@ -3,7 +3,7 @@ def combine_anagrams(words)
   words.each_with_index do |current_word, index|          # identify anagrams and compile their indexes into a hash
     sorted = current_word.downcase.split(//).sort.join    # could/should have used chars method instead of split
     if anagrams.key? sorted
-      anagrams[sorted].push index   # if anagram already exists, add other matches to its array
+      anagrams[sorted].push index   # if anagram already exists, add other matches to its array (could/should have used << operator)
     else
       anagrams[sorted] = [index]    # create a new array if no anagrams for it have yet been found
     end

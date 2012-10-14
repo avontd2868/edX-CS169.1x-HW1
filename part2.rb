@@ -19,11 +19,11 @@ end
 
 def rps_tournament_winner(tournament)
   begin
-    rps_game_winner [tournament[0],tournament[1]]
+    rps_game_winner tournament
   rescue NoSuchStrategyError
-    tournament[0] = rps_tournament_winner tournament[0]
-    tournament[1] = rps_tournament_winner tournament[1]
+    rps_game_winner([rps_tournament_winner(tournament[0]), rps_tournament_winner(tournament[1])])
   rescue WrongNumberOfPlayersError
+    puts "Error: wrong number of players... how on earth did that happen?!?"
   end
 end
 
